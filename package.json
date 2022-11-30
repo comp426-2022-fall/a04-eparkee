@@ -1,0 +1,23 @@
+{
+  "name": "a04-eparkee",
+  "version": "1.0.0",
+  "description": "a04 Stand up an API",
+  "main": "server.js",
+  "scripts": {
+    "test": "PORT=\"$(shuf -i 2000-65535 -n 1)\"; (timeout --signal=SIGINT 5 node server.js --port=$PORT; exit 0) & sleep 1s && curl -s http://localhost:${PORT}/app/roll/ && sleep 5s"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-fall/a04-eparkee.git"
+  },
+  "author": "eparkee",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-fall/a04-eparkee/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-fall/a04-eparkee#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "minimist": "^1.2.7"
+  }
+}
