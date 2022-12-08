@@ -2,7 +2,7 @@
 //This is the start of my server file
 //
 //importing in APIs
-import {roll} from "./lib/roll.js"
+import roll from "./lib/roll.js"
 import minimist from "minimist"
 import express from 'express'
 //setting up args
@@ -14,10 +14,10 @@ const port = args.port || 5000
 const app = express()
 
 //running the express
-app.use(express.urlencoded({extended: true});
+app.use(express.urlencoded({extended: true}));
 
 //returns 200 OK Status
-app.get('/app', (req,res)=> {res.status(200).send('200 OK'); ])};
+app.get('/app', (req,res)=> {res.status(200).send('200 OK'); });
 
 //setting up a default endpoint
 app.get('/app/roll/', (req,res) => {res.setHeader('Content-Type', 'application/json');
@@ -41,7 +41,7 @@ app.get('/app/roll/:sides/:dice/', (req,res) => {
 //
 app.get('/app/roll/:sides/:dice/', (req,res) => {
 	res.setHeader('Content-type', 'application/json');
-	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), parseInt(req.params.rolls)); });
+	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), parseInt(req.params.rolls))); });
 
 // adding in a status code for if nothing can be found
 app.get('*', (req,res)=> {res.send("404 NOT FOUND")});
