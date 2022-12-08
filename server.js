@@ -35,13 +35,18 @@ app.post('/app/roll/', (req,res) =>{
 // parsing the sides endpoints
 app.get('/app/roll/:sides/:dice/', (req,res) => {
 	res.setHeader('Content-type', 'application/json');
-	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), 1)); });
+	res.status(200).send(roll(parseInt(req.params.sides), 2, 1)); });
 
 //getting all that have now been specified
 //
 app.get('/app/roll/:sides/:dice/', (req,res) => {
 	res.setHeader('Content-type', 'application/json');
-	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), parseInt(req.params.rolls))); });
+	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), 1)); });
+
+app.get('/app/roll/:sides/:dice/:rolls/', (req,res,next) => {
+	//Last one let's go
+	res.setHeader('Content-type', 'application/json');
+	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), parseInt(req.parsm.rolls))); });
 
 // adding in a status code for if nothing can be found
 app.get('*', (req,res)=> {res.send("404 NOT FOUND")});
