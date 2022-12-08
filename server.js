@@ -2,7 +2,7 @@
 //This is the start of my server file
 //
 //importing in APIs
-import roll from "./lib/roll.js"
+import {roll} from "./lib/roll.js"
 import minimist from "minimist"
 import express from 'express'
 //setting up args
@@ -20,7 +20,7 @@ app.use(express.urlencoded({extended: true});
 app.get('/app', (req,res)=> {res.status(200).send('200 OK'); ])};
 
 //setting up a default endpoint
-app.get('/app/roll/', (req,res) => {res.setHeader('Content-Type', 'applicatation/json');
+app.get('/app/roll/', (req,res) => {res.setHeader('Content-Type', 'application/json');
 	res.status(200).send(roll(6,2,1)); });
 
 //enable the post
@@ -34,13 +34,20 @@ app.post('/app/roll/', (req,res) =>{
 
 // parsing the sides endpoints
 app.get('/app/roll/:sides/:dice/', (req,res) => {
-	res.setHeader('Content-type', 'applicaiton/json');
+	res.setHeader('Content-type', 'application/json');
 	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), 1)); });
 
 //getting all that have now been specified
 //
 app.get('/app/roll/:sides/:dice/', (req,res) => {
-	res.setHeader('Content-type', 'applicaiton/json');
+	res.setHeader('Content-type', 'application/json');
 	res.status(200).send(roll(parseInt(req.params.sides), parseInt(req.parsm.dice), parseInt(req.params.rolls)); });
 
+// adding in a status code for if nothing can be found
+app.get('*', (req,res)=> {res.send("404 NOT FOUND")});
 
+//setting it up to take input from the user
+app.listen(port, () => {
+	//sending in the console log
+	console.log("Server listening on port " + port)
+});

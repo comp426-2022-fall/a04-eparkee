@@ -4,8 +4,9 @@
   "description": "a04 Stand up an API",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js --port=8000"
+    "test": "node server.js --port=5555"
   },
+  "type": "modules",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/comp426-2022-fall/a04-eparkee.git"
